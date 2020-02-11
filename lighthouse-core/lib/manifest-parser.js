@@ -241,6 +241,7 @@ function parseIcon(raw, manifestUrl) {
   }
 
   const type = parseString(raw.type, true);
+  const purpose = parseString(raw.purpose, true);
 
   const density = {
     raw: raw.density,
@@ -278,6 +279,7 @@ function parseIcon(raw, manifestUrl) {
       type,
       density,
       sizes,
+      purpose,
     },
     warning: undefined,
   };
