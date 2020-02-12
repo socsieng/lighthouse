@@ -140,7 +140,7 @@ npm publish
 # Publish viewer.
 yarn deploy-viewer
 
-# Publish the extension (if it changed).
+# Publish the extensions (if it changed).
 open https://chrome.google.com/webstore/developer/edit/blipmdconlkpinefehnmjammfjpmpbjk
 cd dist/extension-package/
 echo "Upload the package zip to CWS dev dashboard..."

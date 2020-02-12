@@ -10,6 +10,10 @@ const SettingsController = require('./settings-controller.js');
 const VIEWER_URL = 'https://googlechrome.github.io/lighthouse/viewer/';
 const optionsVisibleClass = 'main--options-visible';
 
+const STRINGS = {
+  localhostErrorMessage: chrome.i18n.getMessage('localhostErrorMessage'),
+};
+
 /**
  * Guaranteed context.querySelector. Always returns an element or throws if
  * nothing matches query.
@@ -120,7 +124,7 @@ function getSiteUrl() {
 
       const url = new URL(tabs[0].url);
       if (url.hostname === 'localhost') {
-        reject(new Error('Use DevTools to audit pages on localhost.'));
+        reject(new Error(STRINGS.localhostErrorMessage));
       } else if (/^(chrome|about)/.test(url.protocol)) {
         reject(new Error(`Cannot audit ${url.protocol}// pages.`));
       } else {

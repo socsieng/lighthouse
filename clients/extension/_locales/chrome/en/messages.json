@@ -1,0 +1,8 @@
+{
+  "browserBrand": {
+    "message": "chrome"
+  },
+  "localhostErrorMessage": {
+    "message": "Use DevTools to audit pages on localhost."
+  }
+}
