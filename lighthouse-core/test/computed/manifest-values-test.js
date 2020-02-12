@@ -270,6 +270,25 @@ describe('ManifestValues computed artifact', () => {
 
         assert.equal(iconResults.every(i => i.passing === false), true);
       });
+
+      it('passes when an icon has the maskable purpose property', async () => {
+        const manifestSrc = JSON.stringify({
+          icons: [{
+            src: 'icon.png',
+          }, {
+            src: 'icon2.png',
+            purpose: 'maskable',
+          }],
+        });
+        const WebAppManifest = noUrlManifestParser(manifestSrc);
+        const InstallabilityErrors = {errors: []};
+        const artifacts = {WebAppManifest, InstallabilityErrors};
+
+        const results = await ManifestValues.request(artifacts, getMockContext());
+        const iconResults = results.allChecks.filter(i => i.id.includes('Maskable'));
+
+        assert.equal(iconResults.every(i => i.passing === true), true);
+      });
     });
   });
 });
