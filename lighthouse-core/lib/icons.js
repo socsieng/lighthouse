@@ -71,12 +71,12 @@ function pngSizedAtLeast(sizeRequirement, manifest) {
  * @return {boolean} Does the manifest icons value contain at least one icon with purpose equal to "maskable"
  */
 function containsMaskableIcon(manifest) {
-  const iconValues = manifest.icons.value.filter(icon => {
-    return icon.value.purpose != null && 
-      icon.value.purpose.value != null &&
+  const iconValues = manifest.icons.value;
+  return iconValues.some(icon => {
+    return icon.value.purpose &&
+      icon.value.purpose.value &&
       icon.value.purpose.value.includes('maskable');
   });
-  return iconValues.length > 0;
 }
 
 module.exports = {

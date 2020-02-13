@@ -11,6 +11,8 @@ const manifestParser = require('../../lib/manifest-parser.js');
 
 const manifestSrc = JSON.stringify(require('../fixtures/manifest.json'));
 const manifestDirtyJpgSrc = JSON.stringify(require('../fixtures/manifest-dirty-jpg.json'));
+const manifestNoMaskableSrc =
+  JSON.stringify(require('../fixtures/manifest-no-maskable-icons.json'));
 const EXAMPLE_MANIFEST_URL = 'https://example.com/manifest.json';
 const EXAMPLE_DOC_URL = 'https://example.com/index.html';
 
@@ -59,7 +61,7 @@ describe('PWA: webapp install banner audit', () => {
       return InstallableManifestAudit.audit(artifacts, context).then(result => {
         assert.strictEqual(result.score, 0);
         assert.ok(result.explanation);
-        assert.strictEqual(result.details.items[0].failures.length, 5);
+        assert.strictEqual(result.details.items[0].failures.length, 6);
       });
     });
 
@@ -131,9 +133,10 @@ describe('PWA: webapp install banner audit', () => {
         assert.ok(result.explanation.includes('PNG icon'), result.explanation);
 
         const details = result.details.items[0];
-        assert.strictEqual(details.failures.length, 2, details.failures);
+        assert.strictEqual(details.failures.length, 3, details.failures);
         assert.strictEqual(details.hasStartUrl, true);
         assert.strictEqual(details.hasIconsAtLeast144px, false);
+        assert.strictEqual(details.hasMaskableIcon, false);
       });
     });
 
@@ -166,6 +169,21 @@ describe('PWA: webapp install banner audit', () => {
       assert.strictEqual(details.failures.length, 1, details.failures);
       assert.strictEqual(details.hasStartUrl, true);
       assert.strictEqual(details.hasIconsAtLeast144px, false);
+    });
+  });
+
+  it('fails if icons were present, but no maskable icon present', () => {
+    const artifacts = generateMockArtifacts(manifestNoMaskableSrc);
+    const context = generateMockAuditContext();
+
+    return InstallableManifestAudit.audit(artifacts, context).then(result => {
+      assert.strictEqual(result.score, 0);
+      assert.ok(result.explanation.includes('maskable'), result.explanation);
+
+      const details = result.details.items[0];
+      assert.strictEqual(details.failures.length, 1, details.failures);
+      assert.strictEqual(details.hasStartUrl, true);
+      assert.strictEqual(details.hasMaskableIcon, false);
     });
   });
 });

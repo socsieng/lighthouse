@@ -258,7 +258,7 @@ describe('ManifestValues computed artifact', () => {
         const manifestSrc = JSON.stringify({
           icons: [{
             src: 'icon.png',
-            purpose: 'any', 
+            purpose: 'any',
           }],
         });
         const WebAppManifest = noUrlManifestParser(manifestSrc);
