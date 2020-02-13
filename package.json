@@ -181,7 +181,7 @@
   },
   "bundlesize": [
     {
-      "path": "./dist/extension/scripts/popup-bundle.js",
+      "path": "./dist/extension-chrome/scripts/popup-bundle.js",
       "maxSize": "15 kB"
     },
     {
