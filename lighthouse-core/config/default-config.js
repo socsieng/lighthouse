@@ -215,6 +215,7 @@ const defaultConfig = {
     'metrics',
     'offline-start-url',
     'performance-budget',
+    'timing-budget',
     'resource-summary',
     'third-party-summary',
     // Not enabled yet.
@@ -419,6 +420,7 @@ const defaultConfig = {
         {id: 'mainthread-work-breakdown', weight: 0, group: 'diagnostics'},
         {id: 'font-display', weight: 0, group: 'diagnostics'},
         {id: 'performance-budget', weight: 0, group: 'budgets'},
+        {id: 'timing-budget', weight: 0, group: 'budgets'},
         {id: 'resource-summary', weight: 0, group: 'diagnostics'},
         {id: 'third-party-summary', weight: 0, group: 'diagnostics'},
         // Not enabled yet.
