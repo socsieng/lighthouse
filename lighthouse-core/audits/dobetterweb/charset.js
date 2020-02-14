@@ -33,7 +33,8 @@ const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 const CONTENT_TYPE_HEADER = 'content-type';
 // /^[a-zA-Z0-9-_:.()]{2,}$/ matches all known IANA charset names
-const CHARSET_HTML_REGEX = /<meta[^>]+charset\s*=\s*["']?[a-zA-Z0-9-_:.()]{2,}["']?[^<]*\/?>/;
+const IANA_REGEX = /^[a-zA-Z0-9-_:.()]{2,}$/;
+const CHARSET_HTML_REGEX = /<meta[^>]+charset[^<]+>/;
 const CHARSET_HTTP_REGEX = /charset\s*=\s*[a-zA-Z0-9-_:.()]{2,}/;
 
 class CharsetDefined extends Audit {
@@ -46,7 +47,7 @@ class CharsetDefined extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['MainDocumentContent', 'URL', 'devtoolsLogs'],
+      requiredArtifacts: ['MainDocumentContent', 'URL', 'devtoolsLogs', 'MetaElements'],
     };
   }
 
@@ -74,8 +75,12 @@ class CharsetDefined extends Audit {
     isCharsetSet = isCharsetSet || artifacts.MainDocumentContent.charCodeAt(0) === BOM_FIRSTCHAR;
 
     // Check if charset is defined within the first 1024 characters(~1024 bytes) of the HTML document
-    isCharsetSet = isCharsetSet ||
-      artifacts.MainDocumentContent.slice(0, 1024).match(CHARSET_HTML_REGEX) !== null;
+    if (artifacts.MainDocumentContent.slice(0, 1024).match(CHARSET_HTML_REGEX) !== null) {
+      isCharsetSet = isCharsetSet || artifacts.MetaElements.some(meta => {
+        return (meta.name === 'charset' && meta.content && meta.content.match(IANA_REGEX)) ||
+          (meta.name === 'content-type' && meta.content && meta.content.match(CHARSET_HTTP_REGEX));
+      });
+    }
 
     return {
       score: Number(isCharsetSet),
@@ -87,3 +92,4 @@ module.exports = CharsetDefined;
 module.exports.UIStrings = UIStrings;
 module.exports.CHARSET_HTML_REGEX = CHARSET_HTML_REGEX;
 module.exports.CHARSET_HTTP_REGEX = CHARSET_HTTP_REGEX;
+module.exports.IANA_REGEX = IANA_REGEX;

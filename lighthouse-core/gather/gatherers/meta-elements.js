@@ -22,9 +22,17 @@ class MetaElements extends Gatherer {
       ${getElementsInDocumentString};
 
       return getElementsInDocument('head meta').map(meta => {
+        var metaName;
+        var metaContent;
+        if (meta.httpEquiv) {
+          metaName = meta.httpEquiv;
+        } else if (meta.attributes[0].name == "charset") {
+          metaName = meta.attributes[0].name;
+          metaContent = meta.attributes[0].value;
+        }
         return {
-          name: meta.name.toLowerCase(),
-          content: meta.content,
+          name: metaName ? metaName.toLowerCase() : meta.name.toLowerCase(),
+          content: metaContent ? metaContent : meta.content,
           property: meta.attributes.property ? meta.attributes.property.value : undefined,
         };
       });
