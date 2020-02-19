@@ -3472,6 +3472,45 @@
       "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more](https://web.dev/structured-data).",
       "score": null,
       "scoreDisplayMode": "manual"
+    },
+    "cardname": {
+      "id": "cardname",
+      "title": "Implements autocomplete for ccname",
+      "description": "Form fields for ccname should include the autocomplete attribute.",
+      "score": null,
+      "scoreDisplayMode": "notApplicable",
+      "explanation": "Form field not present."
+    },
+    "cardnumber": {
+      "id": "cardnumber",
+      "title": "Implements autocomplete for cardnumber",
+      "description": "Form fields for cardnumber should include the autocomplete attribute.",
+      "score": null,
+      "scoreDisplayMode": "notApplicable",
+      "explanation": "Form field not present."
+    },
+    "cvc": {
+      "id": "cvc",
+      "title": "Implements autocomplete for cvc",
+      "description": "Form fields for cvc should include the autocomplete attribute.",
+      "score": null,
+      "scoreDisplayMode": "notApplicable",
+      "explanation": "Form field not present."
+    },
+    "expiration": {
+      "id": "expiration",
+      "title": "Implements autocomplete for expiration date",
+      "description": "Form fields for expiration date should include the autocomplete attribute.",
+      "score": null,
+      "scoreDisplayMode": "notApplicable"
+    },
+    "payment-form": {
+      "id": "payment-form",
+      "title": "Implements payment fields in a single form",
+      "description": "Related form fields should belong to the same form.",
+      "score": null,
+      "scoreDisplayMode": "notApplicable",
+      "explanation": "No form fields found."
     }
   },
   "configSettings": {
@@ -4318,6 +4357,39 @@
       ],
       "id": "pwa",
       "score": 0.41
+    },
+    "autocomplete": {
+      "title": "Autocomplete",
+      "description": "These checks ensure that your page is optimized to automatically complete forms for user input. [Learn more](todo).",
+      "auditRefs": [
+        {
+          "id": "cardname",
+          "weight": 0,
+          "group": "autocomplete-payments"
+        },
+        {
+          "id": "cardnumber",
+          "weight": 0,
+          "group": "autocomplete-payments"
+        },
+        {
+          "id": "cvc",
+          "weight": 0,
+          "group": "autocomplete-payments"
+        },
+        {
+          "id": "expiration",
+          "weight": 0,
+          "group": "autocomplete-payments"
+        },
+        {
+          "id": "payment-form",
+          "weight": 0,
+          "group": "autocomplete-payments"
+        }
+      ],
+      "id": "autocomplete",
+      "score": 0
     }
   },
   "categoryGroups": {
@@ -4388,6 +4460,10 @@
     "seo-crawl": {
       "title": "Crawling and Indexing",
       "description": "To appear in search results, crawlers need access to your app."
+    },
+    "autocomplete-payments": {
+      "title": "Payments",
+      "description": "For faster checkout, payment fields should implement autocomplete attributes."
     }
   },
   "timing": {
@@ -5451,6 +5527,36 @@
       {
         "startTime": 0,
         "name": "lh:audit:structured-data",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:cardname",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:cardnumber",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:cvc",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:expiration",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:payment-form",
         "duration": 100,
         "entryType": "measure"
       },
@@ -6709,6 +6815,72 @@
       "lighthouse-core/audits/seo/manual/structured-data.js | description": [
         "audits[structured-data].description"
       ],
+      "lighthouse-core/audits/autocomplete/field.js | title": [
+        {
+          "values": {
+            "field": "ccname"
+          },
+          "path": "audits.cardname.title"
+        },
+        {
+          "values": {
+            "field": "cardnumber"
+          },
+          "path": "audits.cardnumber.title"
+        },
+        {
+          "values": {
+            "field": "cvc"
+          },
+          "path": "audits.cvc.title"
+        },
+        {
+          "values": {
+            "field": "expiration date"
+          },
+          "path": "audits.expiration.title"
+        }
+      ],
+      "lighthouse-core/audits/autocomplete/field.js | description": [
+        {
+          "values": {
+            "field": "ccname"
+          },
+          "path": "audits.cardname.description"
+        },
+        {
+          "values": {
+            "field": "cardnumber"
+          },
+          "path": "audits.cardnumber.description"
+        },
+        {
+          "values": {
+            "field": "cvc"
+          },
+          "path": "audits.cvc.description"
+        },
+        {
+          "values": {
+            "field": "expiration date"
+          },
+          "path": "audits.expiration.description"
+        }
+      ],
+      "lighthouse-core/audits/autocomplete/field.js | noFormFields": [
+        "audits.cardname.explanation",
+        "audits.cardnumber.explanation",
+        "audits.cvc.explanation"
+      ],
+      "lighthouse-core/audits/autocomplete/payment-form.js | title": [
+        "audits[payment-form].title"
+      ],
+      "lighthouse-core/audits/autocomplete/payment-form.js | description": [
+        "audits[payment-form].description"
+      ],
+      "lighthouse-core/audits/autocomplete/payment-form.js | noFormFields": [
+        "audits[payment-form].explanation"
+      ],
       "lighthouse-core/config/default-config.js | performanceCategoryTitle": [
         "categories.performance.title"
       ],
@@ -6741,6 +6913,12 @@
       ],
       "lighthouse-core/config/default-config.js | pwaCategoryManualDescription": [
         "categories.pwa.manualDescription"
+      ],
+      "lighthouse-core/config/default-config.js | autocompleteCategoryTitle": [
+        "categories.autocomplete.title"
+      ],
+      "lighthouse-core/config/default-config.js | autocompleteCategoryDescription": [
+        "categories.autocomplete.description"
       ],
       "lighthouse-core/config/default-config.js | metricGroupTitle": [
         "categoryGroups.metrics.title"
@@ -6837,6 +7015,12 @@
       ],
       "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": [
         "categoryGroups[seo-crawl].description"
+      ],
+      "lighthouse-core/config/default-config.js | autocompletePaymentsGroupTitle": [
+        "categoryGroups[autocomplete-payments].title"
+      ],
+      "lighthouse-core/config/default-config.js | autocompletePaymentsGroupDescription": [
+        "categoryGroups[autocomplete-payments].description"
       ],
       "stack-packs/packs/wordpress.js | unused_css_rules": [
         "stackPacks[0].descriptions[unused-css-rules]"

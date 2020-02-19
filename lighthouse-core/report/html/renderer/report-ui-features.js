@@ -98,7 +98,7 @@ class ReportUIFeatures {
     // Fireworks.
     const scoresAll100 = Object.values(report.categories).every(cat => cat.score === 1);
     const hasAllCoreCategories =
-      Object.keys(report.categories).filter(id => !Util.isPluginCategory(id)).length >= 5;
+      Object.keys(report.categories).filter(id => !Util.isPluginCategory(id)).length >= 6;
     if (scoresAll100 && hasAllCoreCategories) {
       turnOffTheLights = true;
       this._enableFireworks();

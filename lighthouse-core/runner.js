@@ -396,6 +396,7 @@ class Runner {
       'multi-check-audit.js',
       'byte-efficiency/byte-efficiency-audit.js',
       'manual/manual-audit.js',
+      'autocomplete/field.js',
     ];
 
     const fileList = [
@@ -411,6 +412,8 @@ class Runner {
       ...fs.readdirSync(path.join(__dirname, './audits/byte-efficiency'))
           .map(f => `byte-efficiency/${f}`),
       ...fs.readdirSync(path.join(__dirname, './audits/manual')).map(f => `manual/${f}`),
+      ...fs.readdirSync(path.join(__dirname, './audits/autocomplete'))
+          .map(f => `autocomplete/${f}`),
     ];
     return fileList.filter(f => {
       return /\.js$/.test(f) && !ignoredFiles.includes(f);

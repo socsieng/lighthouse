@@ -160,8 +160,8 @@ describe('ReportRenderer', () => {
       const pluginGaugeCount =
         scoresHeaderElem.querySelectorAll('.lh-gauge__wrapper--plugin').length;
 
-      // 5 core categories + the 1 plugin.
-      assert.equal(6, gaugeCount);
+      // 6 core categories + the 1 plugin.
+      assert.equal(7, gaugeCount);
       assert.equal(1, pluginGaugeCount);
     });
 

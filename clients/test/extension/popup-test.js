@@ -20,6 +20,7 @@ const mockStorage = {
     'pwa': true,
     'seo': true,
     'accessibility': false,
+    'autocomplete': false,
     'best-practices': false,
   },
   [STORAGE_KEYS.Settings]: {

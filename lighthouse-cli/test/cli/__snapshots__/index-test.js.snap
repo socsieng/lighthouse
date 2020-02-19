@@ -417,6 +417,21 @@ Object {
     Object {
       "path": "seo/manual/structured-data",
     },
+    Object {
+      "path": "autocomplete/cardname",
+    },
+    Object {
+      "path": "autocomplete/cardnumber",
+    },
+    Object {
+      "path": "autocomplete/cvc",
+    },
+    Object {
+      "path": "autocomplete/expiration",
+    },
+    Object {
+      "path": "autocomplete/payment-form",
+    },
   ],
   "categories": Object {
     "accessibility": Object {
@@ -675,6 +690,37 @@ Object {
       "description": "These checks highlight opportunities to [improve the accessibility of your web app](https://developers.google.com/web/fundamentals/accessibility). Only a subset of accessibility issues can be automatically detected so manual testing is also encouraged.",
       "manualDescription": "These items address areas which an automated testing tool cannot cover. Learn more in our guide on [conducting an accessibility review](https://developers.google.com/web/fundamentals/accessibility/how-to-review).",
       "title": "Accessibility",
+    },
+    "autocomplete": Object {
+      "auditRefs": Array [
+        Object {
+          "group": "autocomplete-payments",
+          "id": "cardname",
+          "weight": 1,
+        },
+        Object {
+          "group": "autocomplete-payments",
+          "id": "cardnumber",
+          "weight": 1,
+        },
+        Object {
+          "group": "autocomplete-payments",
+          "id": "cvc",
+          "weight": 1,
+        },
+        Object {
+          "group": "autocomplete-payments",
+          "id": "expiration",
+          "weight": 1,
+        },
+        Object {
+          "group": "autocomplete-payments",
+          "id": "payment-form",
+          "weight": 1,
+        },
+      ],
+      "description": "These checks ensure that your page is optimized to automatically complete forms for user input. [Learn more](todo).",
+      "title": "Autocomplete",
     },
     "best-practices": Object {
       "auditRefs": Array [
@@ -1154,6 +1200,10 @@ Object {
       "description": "These are opportunities to to improve the experience of reading tabular or list data using assistive technology, like a screen reader.",
       "title": "Tables and lists",
     },
+    "autocomplete-payments": Object {
+      "description": "For faster checkout, payment fields should implement autocomplete attributes.",
+      "title": "Payments",
+    },
     "budgets": Object {
       "description": "Performance budgets set standards for the performance of your site.",
       "title": "Budgets",
@@ -1268,6 +1318,9 @@ Object {
         },
         Object {
           "path": "accessibility",
+        },
+        Object {
+          "path": "form-fields",
         },
       ],
       "loadFailureMode": "fatal",
@@ -1413,6 +1466,10 @@ Object {
     "a11y-tables-lists": Object {
       "description": "These are opportunities to to improve the experience of reading tabular or list data using assistive technology, like a screen reader.",
       "title": "Tables and lists",
+    },
+    "autocomplete-payments": Object {
+      "description": "For faster checkout, payment fields should implement autocomplete attributes.",
+      "title": "Payments",
     },
     "budgets": Object {
       "description": "Performance budgets set standards for the performance of your site.",

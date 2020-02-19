@@ -75,6 +75,10 @@ const smokeTests = [{
   id: 'legacy-javascript',
   expectations: require('./legacy-javascript/expectations.js'),
   config: require('./legacy-javascript/legacy-javascript-config.js'),
+}, {
+  id: 'autocomplete',
+  expectations: require('./autocomplete/autocomplete-expectations.js'),
+  config: require('./autocomplete/autocomplete-config.js'),
 }];
 
 module.exports = smokeTests;

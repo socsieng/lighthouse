@@ -392,6 +392,48 @@
   "lighthouse-core/audits/apple-touch-icon.js | title": {
     "message": "Provides a valid `apple-touch-icon`"
   },
+  "lighthouse-core/audits/autocomplete/expiration.js | noAutocomplete": {
+    "message": "The expiration field '{name}' is missing autocomplete attribute of '{autocomplete}'."
+  },
+  "lighthouse-core/audits/autocomplete/expiration.js | noMonth": {
+    "message": "No month field found."
+  },
+  "lighthouse-core/audits/autocomplete/expiration.js | noYear": {
+    "message": "No year field found."
+  },
+  "lighthouse-core/audits/autocomplete/field.js | description": {
+    "message": "Form fields for {field} should include the autocomplete attribute."
+  },
+  "lighthouse-core/audits/autocomplete/field.js | failureTitle": {
+    "message": "Does not implement autocomplete for {field}"
+  },
+  "lighthouse-core/audits/autocomplete/field.js | noAutocomplete": {
+    "message": "The field '{name}' is missing autocomplete attribute of '{autocomplete}'."
+  },
+  "lighthouse-core/audits/autocomplete/field.js | noFormFields": {
+    "message": "Form field not present."
+  },
+  "lighthouse-core/audits/autocomplete/field.js | title": {
+    "message": "Implements autocomplete for {field}"
+  },
+  "lighthouse-core/audits/autocomplete/payment-form.js | description": {
+    "message": "Related form fields should belong to the same form."
+  },
+  "lighthouse-core/audits/autocomplete/payment-form.js | failureTitle": {
+    "message": "Does not implement payment fields in a single form"
+  },
+  "lighthouse-core/audits/autocomplete/payment-form.js | multipleForms": {
+    "message": "Payment fields should exist in the same `form` element."
+  },
+  "lighthouse-core/audits/autocomplete/payment-form.js | noFormFields": {
+    "message": "No form fields found."
+  },
+  "lighthouse-core/audits/autocomplete/payment-form.js | noForms": {
+    "message": "Form fields should be inside a `form` element."
+  },
+  "lighthouse-core/audits/autocomplete/payment-form.js | title": {
+    "message": "Implements payment fields in a single form"
+  },
   "lighthouse-core/audits/bootup-time.js | chromeExtensionsWarning": {
     "message": "Chrome extensions negatively affected this page's load performance. Try auditing the page in incognito mode or from a Chrome profile without extensions."
   },
@@ -1300,6 +1342,18 @@
   },
   "lighthouse-core/config/default-config.js | a11yTablesListsVideoGroupTitle": {
     "message": "Tables and lists"
+  },
+  "lighthouse-core/config/default-config.js | autocompleteCategoryDescription": {
+    "message": "These checks ensure that your page is optimized to automatically complete forms for user input. [Learn more](todo)."
+  },
+  "lighthouse-core/config/default-config.js | autocompleteCategoryTitle": {
+    "message": "Autocomplete"
+  },
+  "lighthouse-core/config/default-config.js | autocompletePaymentsGroupDescription": {
+    "message": "For faster checkout, payment fields should implement autocomplete attributes."
+  },
+  "lighthouse-core/config/default-config.js | autocompletePaymentsGroupTitle": {
+    "message": "Payments"
   },
   "lighthouse-core/config/default-config.js | bestPracticesCategoryTitle": {
     "message": "Best Practices"

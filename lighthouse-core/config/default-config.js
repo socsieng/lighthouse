@@ -111,6 +111,15 @@ const UIStrings = {
   pwaInstallableGroupTitle: 'Installable',
   /** Title of the "PWA Optimized" section of the web app category. Within this section are audits that check if the developer has taken advantage of features to make their web page more enjoyable and engaging for the user. */
   pwaOptimizedGroupTitle: 'PWA Optimized',
+  /** Title of the Autocomplete category of audits. This is displayed at the top of a list of audits focused on topics related to optimizing autocomplete for input forms. Also used as a label of a score gauge; try to limit to 20 characters. */
+  autocompleteCategoryTitle: 'Autocomplete',
+  /** Description of the Search Engine Optimization (SEO) category. This is displayed at the top of a list of audits focused on optimizing autocomplete for input forms. No character length limits. 'Learn More' becomes link text to additional documentation. */
+  autocompleteCategoryDescription: 'These checks ensure that your page is optimized to automatically complete forms for user input. ' +
+  '[Learn more](todo).',
+  /** Title of the navigation section within the Autocomplete category. Within this section are audits with descriptive titles that highlight ways to make checkout faster for users. */
+  autocompletePaymentsGroupTitle: 'Payments',
+  /** Description of the navigation section within the Autocomplete category. Within this section are audits with descriptive titles that highlight ways to make checkout faster for users. */
+  autocompletePaymentsGroupDescription: 'For faster checkout, payment fields should implement autocomplete attributes.',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -150,6 +159,7 @@ const defaultConfig = {
       'seo/robots-txt',
       'seo/tap-targets',
       'accessibility',
+      'form-fields',
     ],
   },
   {
@@ -310,6 +320,11 @@ const defaultConfig = {
     'seo/plugins',
     'seo/canonical',
     'seo/manual/structured-data',
+    'autocomplete/cardname',
+    'autocomplete/cardnumber',
+    'autocomplete/cvc',
+    'autocomplete/expiration',
+    'autocomplete/payment-form',
   ],
 
   groups: {
@@ -380,6 +395,10 @@ const defaultConfig = {
     'seo-crawl': {
       title: str_(UIStrings.seoCrawlingGroupTitle),
       description: str_(UIStrings.seoCrawlingGroupDescription),
+    },
+    'autocomplete-payments': {
+      title: str_(UIStrings.autocompletePaymentsGroupTitle),
+      description: str_(UIStrings.autocompletePaymentsGroupDescription),
     },
   },
   categories: {
@@ -565,6 +584,17 @@ const defaultConfig = {
         {id: 'pwa-cross-browser', weight: 0},
         {id: 'pwa-page-transitions', weight: 0},
         {id: 'pwa-each-page-has-url', weight: 0},
+      ],
+    },
+    'autocomplete': {
+      title: str_(UIStrings.autocompleteCategoryTitle),
+      description: str_(UIStrings.autocompleteCategoryDescription),
+      auditRefs: [
+        {id: 'cardname', weight: 1, group: 'autocomplete-payments'},
+        {id: 'cardnumber', weight: 1, group: 'autocomplete-payments'},
+        {id: 'cvc', weight: 1, group: 'autocomplete-payments'},
+        {id: 'expiration', weight: 1, group: 'autocomplete-payments'},
+        {id: 'payment-form', weight: 1, group: 'autocomplete-payments'},
       ],
     },
   },

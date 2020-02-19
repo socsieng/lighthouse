@@ -232,6 +232,22 @@
             "scoreDisplayMode": "binary",
             "title": "Charset declaration is missing or occurs too late in the HTML"
         },
+        "cardname": {
+            "description": "Form fields for ccname should include the autocomplete attribute.",
+            "explanation": "Form field not present.",
+            "id": "cardname",
+            "score": null,
+            "scoreDisplayMode": "notApplicable",
+            "title": "Implements autocomplete for ccname"
+        },
+        "cardnumber": {
+            "description": "Form fields for cardnumber should include the autocomplete attribute.",
+            "explanation": "Form field not present.",
+            "id": "cardnumber",
+            "score": null,
+            "scoreDisplayMode": "notApplicable",
+            "title": "Implements autocomplete for cardnumber"
+        },
         "color-contrast": {
             "description": "Low-contrast text is difficult or impossible for many users to read. [Learn more](https://web.dev/color-contrast/).",
             "details": {
@@ -446,6 +462,14 @@
             "score": null,
             "scoreDisplayMode": "manual",
             "title": "Custom controls have ARIA roles"
+        },
+        "cvc": {
+            "description": "Form fields for cvc should include the autocomplete attribute.",
+            "explanation": "Form field not present.",
+            "id": "cvc",
+            "score": null,
+            "scoreDisplayMode": "notApplicable",
+            "title": "Implements autocomplete for cvc"
         },
         "definition-list": {
             "description": "When definition lists are not properly marked up, screen readers may produce confusing or inaccurate output. [Learn more](https://web.dev/definition-list/).",
@@ -709,6 +733,13 @@
             "score": 1.0,
             "scoreDisplayMode": "numeric",
             "title": "Estimated Input Latency"
+        },
+        "expiration": {
+            "description": "Form fields for expiration date should include the autocomplete attribute.",
+            "id": "expiration",
+            "score": null,
+            "scoreDisplayMode": "notApplicable",
+            "title": "Implements autocomplete for expiration date"
         },
         "external-anchors-use-rel-noopener": {
             "description": "Add `rel=\"noopener\"` or `rel=\"noreferrer\"` to any external links to improve performance and prevent security vulnerabilities. [Learn more](https://web.dev/external-anchors-use-rel-noopener).",
@@ -2185,6 +2216,14 @@
             "score": 0.0,
             "scoreDisplayMode": "binary",
             "title": "Prevents users to paste into password fields"
+        },
+        "payment-form": {
+            "description": "Related form fields should belong to the same form.",
+            "explanation": "No form fields found.",
+            "id": "payment-form",
+            "score": null,
+            "scoreDisplayMode": "notApplicable",
+            "title": "Implements payment fields in a single form"
         },
         "performance-budget": {
             "description": "Keep the quantity and size of network requests under the targets set by the provided performance budget. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/budgets).",
@@ -4147,6 +4186,39 @@
             "manualDescription": "Run these additional validators on your site to check additional SEO best practices.",
             "score": 0.73,
             "title": "SEO"
+        },
+        "autocomplete": {
+            "title": "Autocomplete",
+            "description": "These checks ensure that your page is optimized to automatically complete forms for user input. [Learn more](todo).",
+            "auditRefs": [
+                {
+                    "group": "autocomplete-payments",
+                    "id": "cardname",
+                    "weight": 0
+                },
+                {
+                    "group": "autocomplete-payments",
+                    "id": "cardnumber",
+                    "weight": 0
+                },
+                {
+                    "group": "autocomplete-payments",
+                    "id": "cvc",
+                    "weight": 0
+                },
+                {
+                    "group": "autocomplete-payments",
+                    "id": "expiration",
+                    "weight": 0
+                },
+                {
+                    "group": "autocomplete-payments",
+                    "id": "payment-form",
+                    "weight": 0
+                }
+            ],
+            "id": "autocomplete",
+            "score": 0
         }
     },
     "categoryGroups": {
@@ -4181,6 +4253,10 @@
         "a11y-tables-lists": {
             "description": "These are opportunities to to improve the experience of reading tabular or list data using assistive technology, like a screen reader.",
             "title": "Tables and lists"
+        },
+        "autocomplete-payments": {
+            "description": "For faster checkout, payment fields should implement autocomplete attributes.",
+            "title": "Payments"
         },
         "budgets": {
             "description": "Performance budgets set standards for the performance of your site.",
@@ -5368,6 +5444,36 @@
                 "entryType": "measure",
                 "name": "lh:audit:structured-data",
                 "startTime": 0.0
+            },
+            {
+                "startTime": 0,
+                "name": "lh:audit:cardname",
+                "duration": 100,
+                "entryType": "measure"
+            },
+            {
+                "startTime": 0,
+                "name": "lh:audit:cardnumber",
+                "duration": 100,
+                "entryType": "measure"
+            },
+            {
+                "startTime": 0,
+                "name": "lh:audit:cvc",
+                "duration": 100,
+                "entryType": "measure"
+            },
+            {
+                "startTime": 0,
+                "name": "lh:audit:expiration",
+                "duration": 100,
+                "entryType": "measure"
+            },
+            {
+                "startTime": 0,
+                "name": "lh:audit:payment-form",
+                "duration": 100,
+                "entryType": "measure"
             },
             {
                 "duration": 100.0,

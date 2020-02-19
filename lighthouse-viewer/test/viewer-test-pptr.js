@@ -213,6 +213,7 @@ describe('Lighthouse Viewer', () => {
         category: [
           'performance',
           'accessibility',
+          'autocomplete',
           'seo',
           'best-practices',
           'pwa',

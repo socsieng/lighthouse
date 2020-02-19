@@ -21,6 +21,9 @@ const DEFAULT_CATEGORIES = [{
 }, {
   id: 'pwa',
   title: 'Progressive Web App',
+}, {
+  id: 'autocomplete',
+  title: 'Autocomplete',
 }];
 
 /** @typedef {{selectedCategories: string[], device: string}} Settings */

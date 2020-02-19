@@ -140,6 +140,8 @@ declare global {
       TagsBlockingFirstPaint: Artifacts.TagBlockingFirstPaint[];
       /** Information about tap targets including their position and size. */
       TapTargets: Artifacts.TapTarget[];
+      /** Information about form fields including label and autocomplete information. */
+      FormFields: Artifacts.FormField[];
     }
 
     module Artifacts {
@@ -270,7 +272,7 @@ declare global {
         /** An optional name of the generated code (the bundled code that was the result of this build process) that this source map is associated with. */
         file?: string
         /**
-         * An optional array of maps that are associated with an offset into the generated code. 
+         * An optional array of maps that are associated with an offset into the generated code.
          * `map` is optional because the spec defines that either `url` or `map` must be defined.
          * We explicitly only support `map` here.
         */
@@ -632,6 +634,17 @@ declare global {
         observedLastVisualChangeTs: number;
         observedSpeedIndex: number;
         observedSpeedIndexTs: number;
+      }
+
+      export interface FormField {
+        id?: string;
+        name?: string;
+        elementType: string;
+        inputType?: string;
+        label?: string;
+        autocomplete?: string;
+        placeholder?: string;
+        formPath?: string;
       }
     }
   }
